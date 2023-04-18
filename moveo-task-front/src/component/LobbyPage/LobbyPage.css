@@ -1,5 +1,14 @@
-
 .lobby-title{
-   color: brown;
+   color: white;
    text-align: center;
+}
+
+button {
+   background-color: white;
+   width: 150px;
+   height: 150px;
+   border-radius: 5px;
+   font-family: "Anton", sans-serif;
+   font-weight: 700;
+   font-size: 15px;
 }
