@@ -2,10 +2,11 @@ import "../LobbyPage/LobbyPage.css"
 
 const codes:any = async () => {
 	try {
-		const response = await fetch("http://localhost:8000/codes", {
+		const response = await fetch("http://localhost:8000/moveoTask/codes", {
 			method: "GET",
 		});
 		const data = await response.json();
+        console.log(data)
 		return data;
 	} catch (err) {
 		console.log();

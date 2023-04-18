@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(cors());
 
-// app.use(routes);
+app.use(routes);
 
 app.get("/", function (req, res) {
    res.send("Hello World");

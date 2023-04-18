@@ -9,3 +9,4 @@ export const getAllCodes= async (req: Request, res: Response) => {
         return res.status(400).json({ status: 400, message: err.message });
     }
 }
+
