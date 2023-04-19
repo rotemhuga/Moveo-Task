@@ -21,14 +21,19 @@ function App() {
     });
   }, [socket]);
 
+    const handleInputChange = (event:any) => {
+    setMessage(event.target.value);
+    socket.emit("send_message", { message: event.target.value });
+  };
+
   return (
     <div className="APP">
       <input  
       placeholder='Message-front' 
-      onChange={(event) => {
-        setMessage(event.target.value)
-      }} />
-      <button onClick={sendMessage}>send message</button>
+      value={message}
+      onChange={handleInputChange}
+      />
+      <button>send message</button>
       <h1>Message:</h1>
       {messageReceived}
     </div>
