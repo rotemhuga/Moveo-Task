@@ -7,36 +7,77 @@ export interface ICode {
 	code: string;
 }
 
-const dataCodes = async () => {
-	try {
-		const response = await fetch(
-			"http://localhost:8000/moveoTask/codes",
-			{
-				method: "GET",
-			}
-		);
-		const codesData = await response.json();
-		return codesData;
-	} catch (err) {
-	}
-};
-const codes: ICode[] = await dataCodes();
-export const CodeSlice = createSlice({
-	name: "codes",
-	initialState: {
-		value: codes,
-		// filteredValue: {},
-	},
-	reducers: {
-		AllCodesValue: (state) => {
-			state.value = state.value;
-		},
-	},
-});
+const getData = await fetch("http://localhost:8000/moveoTask/codes")
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err:any) => {
+        console.log(err.message);
+    });
 
-export const { AllCodesValue } = CodeSlice.actions;
+const allCodesValue:any = await getData;
+console.log(allCodesValue)
 
-export default CodeSlice.reducer;
+export const codesSlice = createSlice({
+    name: "codes",
+    initialState: {
+      value: allCodesValue,
+    },
+    reducers: {
+      codePageFilter: (state, action) => {
+      state.value = state.value;
+        // switch (filterType){
+        //   case "all":
+        //       state.value = code
+        //       break;
+        //   case "new":
+        //       state.value = code
+        //       state.value = state.value.filter(
+        //           (code:any) => code.title === "redux"); 
+        //       break;
+        //   default:
+        //   state.value = state.value;
+        // }
+      }
+  }
+  })
+  
+  export const { codePageFilter } = codesSlice.actions;
+  export default codesSlice.reducer;
+
+
+
+// const dataCodes = async () => {
+// 	try {
+// 		const response = await fetch(
+// 			"http://localhost:8000/moveoTask/codes",
+// 			{
+// 				method: "GET",
+// 			}
+// 		);
+// 		const codesData = await response.json();
+// 		return codesData;
+// 	} catch (err) {
+// 	}
+// };
+// const codes: ICode[] = await dataCodes();
+// export const CodeSlice = createSlice({
+// 	name: "codes",
+// 	initialState: {
+// 		value: codes,
+// 		// filteredValue: {},
+// 	},
+// 	reducers: {
+// 		AllCodesValue: (state) => {
+// 			state.value = state.value;
+// 		},
+// 	},
+// });
+
+// export const { AllCodesValue } = CodeSlice.actions;
+
+// export default CodeSlice.reducer;
 
 
 // import { createSlice } from "@reduxjs/toolkit";

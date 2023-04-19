@@ -1,35 +1,51 @@
 import "../LobbyPage/LobbyPage.css"
-import { AllCodesValue, ICode } from "../../store/slices/codesSlice";
+// import { AllCodesValue, ICode } from "../../store/slices/codesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { IRootState } from "../../store/store";
 import { ICodeState } from "../../store/store";
 import { io } from 'socket.io-client';
+import { useNavigate } from "react-router-dom";
+import codesSlice from "../../store/slices/codesSlice";
+import CardCode from "../CodeCard/CodeCard";
+import { ICodeCard } from "../CodeCard/CodeCard";
 
-const socket = io("http://localhost:8000")
+// const socket = io("http://localhost:8000")
 
 const LobbyPage: React.FC = () => {
-    const [message, setMessage] = useState("");
-    const [messageReceived, setMessageReceived] = useState("");
+    // const [message, setMessage] = useState("");
+    // const [messageReceived, setMessageReceived] = useState("");
 
-    useEffect(() => {
-        socket.on("recieve_message", (data:any) => {
-        setMessageReceived(data.message)
-        });
-    }, [socket]);
+    // useEffect(() => {
+    //     socket.on("recieve_message", (data:any) => {
+    //     setMessageReceived(data.message)
+    //     });
+    // }, [socket]);
 
-        const handleInputChange = (event:any) => {
-        setMessage(event.target.value);
-        socket.emit("send_message", { message: event.target.value });
-    };
+    //     const handleInputChange = (event:any) => {
+    //     setMessage(event.target.value);
+    //     socket.emit("send_message", { message: event.target.value });
+    // };
+
+//  
+// const codes = allCodes.map((code:any) => {
+//             return <CardCode 
+//             _id = {code._id}
+//             title = {code.title}
+//             code = {code.code}
+//             key = {code._id}
+//         />  
+// })
 
     return (
         <div className="lobby-page-content">
             <h1 className="lobby-title">Lobby Page</h1>
             <h2>Choose code block</h2>
             <div className="all-buttons">
+                <div>
+                </div>
                 <button>
-                    Async code
+                    async 
                 </button>
                 <button>
                     Redux
