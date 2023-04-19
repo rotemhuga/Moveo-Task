@@ -3,6 +3,18 @@
    text-align: center;
 }
 
+.lobby-page-content{
+   text-align: center;
+   color: white;
+}
+
+.all-buttons{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   grid-template-columns: auto auto auto;
+}
+
 button {
    background-color: white;
    width: 150px;
