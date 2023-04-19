@@ -10,20 +10,21 @@ const socket = io("http://localhost:8000")
 function App() {
   const [message, setMessage] = useState("");
   const [messageReceived, setMessageReceived] = useState("");
+
   const sendMessage = () => {
     socket.emit("send_message", { message });
   };
 
-  useEffect (() => {
+  useEffect(() => {
     socket.on("recieve_message", (data) => {
       setMessageReceived(data.message)
-    })
-  }, [socket])
+    });
+  }, [socket]);
 
   return (
-    <div>
-      <input type="text" 
-      placeholder='Message' 
+    <div className="APP">
+      <input  
+      placeholder='Message-front' 
       onChange={(event) => {
         setMessage(event.target.value)
       }} />

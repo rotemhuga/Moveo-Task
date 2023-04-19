@@ -22,8 +22,8 @@ io.on("connection", (socket) => {
         console.log(data)
         socket.broadcast.emit("recieve_message", data)
     });
-})
+});
 
 server.listen(8000, () => {
   console.log("server is running")  
-})
+});
